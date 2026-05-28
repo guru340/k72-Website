@@ -57,25 +57,25 @@ useGSAP(function () {
 
   return (
     <div  >
-    <div className='section1'>
-        <div ref={imageDivRef} className='h-[20vw] w-[13vw] rounded-4xl  overflow-hidden absolute top-40 left-[30vw] '>
-                    <img ref={imageRef} className='h-full w-full object-cover'
+    <div className='section1 py-1'>
+        <div ref={imageDivRef} className='h-[20vw] w-[13vw] rounded-4xl  overflow-hidden absolute top-50 left-[30vw]'>
+                    <img ref={imageRef} absolute className='h-full w-full object-cover'
                         src="https://k72.ca/images/teamMembers/Carl_480x640.jpg?w=480&h=640&fit=crop&s=f0a84706bc91a6f505e8ad35f520f0b7"
-                        alt="Team member"
+                        alt=""
                     
                     />
                 </div>
 
                 <div className='relative font-[font2] '>
-            <div className=' mt-[55vh]' >
-                    <h1 className='h-screen text-[20vw] text-center uppercase leading-[15vw] text-white'>
+            <div className='mt-[55vh]' >
+                    <h1 className='h-screen text-[20vw] text-center uppercase leading-[18vw] text-black'>
                     SEVEN7Y<br/>
                     TWO2
                 </h1>
             </div>
 
-            <div className='pl-[40%] mt-5'>
-                <p className='text-5xl text-white '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div className='pl-[40%] mt-10'>
+                <p className='text-5xl text-black '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     "We’re inquisitive and open-minded, and we make sure creativity crowds out ego from every corner. A brand is a living thing, with values, a personality and a story. If we ignore that, we can achieve short-term success, but not influence that goes the distance. We bring that perspective to every brand story we help tell."
                 </p>
             </div>
