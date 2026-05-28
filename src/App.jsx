@@ -1,12 +1,50 @@
 import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import Project from './pages/Project'
+import Agence from './pages/Agence'
+import { useGSAP } from "@gsap/react";
+import gsap from 'gsap';
 
 const App = () => {
+ 
+   useGSAP(function(){
+    const tl=gsap.timeline()
+    tl.from('.stair',{
+      height:0,
+      stagger:{
+        amount:-0.25
+      }
+
+    })
+    tl.to('.stair',{
+      y:'100%',
+      stagger:{
+        amount:-0.25
+      }
+    })
+   }) 
+
+
   return (
-    <div>
-      App
+
+    
+    <div className='text-white'>
+       <div className='h-screen w-full z-20 flex fixed'>
+      <div className='stair h-full w-1/5  bg-black'></div>
+      <div className='stair h-full w-1/5  bg-black'></div>
+      <div className='stair h-full w-1/5  bg-black'></div>
+      <div className='stair h-full w-1/5  bg-black'></div>
+      <div className='stair h-full w-1/5  bg-black'></div>
+      
+       </div>
+      <Routes >
+        <Route path='/' element={<Home />} />
+        <Route path='/project' element={<Project />} />
+        <Route path='/agence' element={<Agence />} />
+      </Routes>
     </div>
   )
 }
 
 export default App
-App
