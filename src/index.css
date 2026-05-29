@@ -1,14 +1,53 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'font1';
-  src: url('../public/fonts/Lausanne-300.woff2'); 
-  
+    font-family: font1;
+    src: url(/fonts/Lausanne-300.woff2);
 }
-
 @font-face {
-  font-family: 'font2';
-  src: url('../public/fonts/Lausanne-500.woff2'); 
-  
+    font-family: font2;
+    src: url(/fonts/Lausanne-500.woff2);
 }
 
+/* Scrolling marquee on nav hover */
+.moveX {
+    animation-name: moveAnimation;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    flex-shrink: 0;
+}
+
+/* Nav link hover overlay — hidden by default */
+.moveLink {
+    opacity: 0;
+    transition: opacity ease 0.3s;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.link:hover .moveLink {
+    opacity: 1;
+}
+
+/* Stair panels for FullScreenNav — start at 0 height */
+.stairing {
+    height: 0;
+}
+
+/* Prevent horizontal scroll globally */
+html,
+body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+@keyframes moveAnimation {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}

@@ -1,9 +1,17 @@
 import React from 'react'
+import videoSrc from '../../Components/Home/video.mp4'
 
 const Video = () => {
   return (
     <div className='h-full w-full'>
-      <video className='w-full h-full object-cover' autoPlay loop muted src="../../../src/Components/Home/Video.mp4"></video> 
+      <video
+        className='h-full w-full object-cover'
+        autoPlay
+        loop
+        muted
+        playsInline
+        src={videoSrc}
+      />
     </div>
   )
 }

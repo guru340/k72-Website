@@ -1,14 +1,12 @@
-import React, { useRef } from 'react'
-import { useGSAP } from "@gsap/react";
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-const Agence = () => {
-  const imageDivRef = useRef(null) 
-  const imageRef = useRef(null)
-    gsap.registerPlugin(ScrollTrigger);
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
+import { useRef } from 'react'
 
-    const imageArray = [
-    'https://k72.ca/images/teamMembers/Carl_480x640.jpg?w=480&h=640&fit=crop&s=f0a84706bc91a6f505e8ad35f520f0b7',
+gsap.registerPlugin(ScrollTrigger)
+
+const imageArray = [
+    'https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg',
     'https://k72.ca/uploads/teamMembers/Olivier_480x640-480x640.jpg',
     'https://k72.ca/uploads/teamMembers/Lawrence_480x640-480x640.jpg',
     'https://k72.ca/uploads/teamMembers/HugoJoseph_480x640-480x640.jpg',
@@ -22,70 +20,73 @@ const Agence = () => {
     'https://k72.ca/uploads/teamMembers/MAXIME_480X640_2-480x640.jpg',
     'https://k72.ca/uploads/teamMembers/MEGGIE_480X640_2-480x640.jpg',
     'https://k72.ca/uploads/teamMembers/joel_480X640_3-480x640.jpg',
-  ]
+]
 
+const Agence = () => {
+    const imageDivRef = useRef(null)
+    const imageRef = useRef(null)
 
-useGSAP(function () {
-
-
-    gsap.to(imageDivRef.current, {
-      scrollTrigger: {
-        trigger: imageDivRef.current,
-        // markers: true,
-        start: 'top 28%',
-        end: 'top -70%',
-        pin: true,
-        pinSpacing: true,
-        pinReparent: true,
-        pinType: 'transform',
-        scrub: 1, // smooth scrubbing with 1s easing
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (elem) => {
-          let imageIndex;
-          if (elem.progress < 1) {
-            imageIndex = Math.floor(elem.progress * imageArray.length)
-          } else {
-            imageIndex = imageArray.length - 1
-          }
-          imageRef.current.src = imageArray[imageIndex]
-        }
-      }
+    useGSAP(function () {
+        gsap.to(imageDivRef.current, {
+            scrollTrigger: {
+                trigger: imageDivRef.current,
+                start: 'top 28%',
+                end: 'top -70%',
+                pin: true,
+                pinSpacing: true,
+                pinReparent: true,
+                scrub: 1,
+                anticipatePin: 1,
+                invalidateOnRefresh: true,
+                onUpdate: (self) => {
+                    const imageIndex = self.progress < 1
+                        ? Math.floor(self.progress * imageArray.length)
+                        : imageArray.length - 1
+                    imageRef.current.src = imageArray[imageIndex]
+                }
+            }
+        })
     })
-  })
 
+    return (
+        <div>
+            {/* Page 1 */}
+            <div id='page1' className='relative py-1 min-h-screen'>
 
-  return (
-    <div  >
-    <div className='section1 py-1'>
-        <div ref={imageDivRef} className='h-[20vw] w-[13vw] rounded-4xl  overflow-hidden absolute top-50 left-[30vw]'>
-                    <img ref={imageRef} absolute className='h-full w-full object-cover'
-                        src="https://k72.ca/images/teamMembers/Carl_480x640.jpg?w=480&h=640&fit=crop&s=f0a84706bc91a6f505e8ad35f520f0b7"
-                        alt=""
-                    
+                {/* Floating team image — z-0 so text renders on top */}
+                <div
+                    ref={imageDivRef}
+                    className='absolute overflow-hidden lg:h-[20vw] h-[35vw] lg:rounded-3xl rounded-2xl lg:w-[15vw] w-[26vw] lg:top-96 top-24 lg:left-[30vw] left-[37vw] z-0'
+                >
+                    <img
+                        ref={imageRef}
+                        className='h-full object-cover w-full'
+                        src={imageArray[0]}
+                        alt="Team member"
                     />
                 </div>
 
-                <div className='relative font-[font2] '>
-            <div className='mt-[55vh]' >
-                    <h1 className='h-screen text-[20vw] text-center uppercase leading-[18vw] text-black'>
-                    SEVEN7Y<br/>
-                    TWO2
-                </h1>
+                {/* Big title — z-10 renders above the image */}
+                <div className='relative z-10 font-[font2]'>
+                    <div className='lg:mt-[55vh] mt-[40vw]'>
+                        <h1 className='lg:text-[20vw] text-[22vw] text-center uppercase lg:leading-[18vw] leading-[20vw]'>
+                            Soixan7e <br />Douze
+                        </h1>
+                    </div>
+
+                    {/* Description text */}
+                    <div className='lg:pl-[40%] lg:mt-20 mt-6 px-4 lg:px-3 pb-16'>
+                        <p className='lg:text-5xl text-base leading-snug lg:leading-tight'>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Notre curiosité nourrit notre créativité. On reste humbles et on dit non aux gros egos, même le vôtre. Une marque est vivante. Elle a des valeurs, une personnalité, une histoire. Si on oublie ça, on peut faire de bons chiffres à court terme, mais on la tue à long terme. C'est pour ça qu'on s'engage à donner de la perspective, pour bâtir des marques influentes.
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <div className='pl-[40%] mt-10'>
-                <p className='text-5xl text-black '>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    "We’re inquisitive and open-minded, and we make sure creativity crowds out ego from every corner. A brand is a living thing, with values, a personality and a story. If we ignore that, we can achieve short-term success, but not influence that goes the distance. We bring that perspective to every brand story we help tell."
-                </p>
-            </div>
+            {/* Page 2 — spacer for scroll pin */}
+            <div id='page2' className='h-screen' />
         </div>
-    
-    </div>    
-    <div className="section2 h-screen">
-    </div>
-     </div>
-  )
+    )
 }
 
 export default Agence
