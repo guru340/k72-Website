@@ -2,7 +2,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import React, { useContext, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+
 import { NavbarContext } from '../../context/NavContext'
 
 const navItems = [
