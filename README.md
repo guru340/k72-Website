@@ -19,5 +19,5 @@ Tech Stack
 | React.js         | Frontend Framework       |
 | GSAP             | Advanced Animations      |
 | Tailwind CSS     | Styling                  |
-| React Router DOM | Routing                  |
+| React Router DOM | Routing                   |
 | Vite             | Development & Build Tool |
